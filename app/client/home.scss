@@ -1,0 +1,32 @@
+article
+{
+
+
+	img
+	{
+		width: 100%;
+	}
+
+	&.size-l
+	{
+		background-color: hsl(7, 46%, 80%);
+		
+	}
+
+	&.size-m, &
+	{
+		background-color: hsl(126, 46%, 80%);
+		
+	}
+
+	&.size-s
+	{
+		background-color: hsl(206, 46%, 80%);
+		img
+		{
+			display: none;
+		}
+
+	}
+
+}
