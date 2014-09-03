@@ -2,18 +2,36 @@
 
 <template name="home">
 <h1>home</h1>
-
+<div class="container">
+ {{> quickForm collection="Articles" type="insert"}}
+</div>
 <div class="grid">
 
 {{#each articles}}
-	<article class="size-{{size}} {{sizeClasses}}">
-
-	<h1>{{title}}</h1>
-	<img src="http://www.medea-awards.com/files/showcases-2010/2010_blabla00.jpg" />
-	<p>{{text}}</p>
-	</article>
+	{{>article_box}}
 {{/each}}
 
 </div>
 
+</template>
+
+
+<template name="article_box">
+<article class="size-{{size}} {{sizeClasses}} {{#if editMode}}editMode{{/if}}">
+	<button class="btn btn-update">Update</button>
+	
+	<div class="content">
+
+	{{#if editMode}}
+		{{> quickForm collection="Articles" id=_id type="update" doc=. }}
+	{{else}}
+
+	<h1>{{title}}</h1>
+	<img src="http://www.medea-awards.com/files/showcases-2010/2010_blabla00.jpg" />
+	{{#markdown}}{{{text}}}{{/markdown}}
+
+	{{/if}}
+	</div>
+
+	</article>
 </template>
