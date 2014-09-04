@@ -11,11 +11,12 @@ fuckIn = ->
 fuckOut = ->
 	$("body").removeClass "fuckoff"
 	$("body").addClass "boom"
-	Meteor.setTimeout ->
-		$("body").removeClass "boom"
-	
-		Meteor.setTimeout fuckIn, 5000
-	, 300
+	if Session.get "sandromode"
+		Meteor.setTimeout ->
+			$("body").removeClass "boom"
+		
+			Meteor.setTimeout fuckIn, 5000
+		, 300
 
 Template.header.events
 	"click .btn-toggle-fuck": ->
