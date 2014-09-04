@@ -2,7 +2,7 @@ Router.map ->
 	@route "home", 
 		path: "/"
 		data: ->
-			articles: Articles.find {},  {sort: {itime: -1}}
+			articles: Articles.find {},  {sort: {createdAt: -1}}
 		
 
 
@@ -16,12 +16,12 @@ Template.home.rendered = ->
 	layout = ->
 		$grid.packery "destroy"
 		$grid.packery( )
-		#$grid.find "article .content"
-		#.okshadow()
+		$grid.find "article .content"
+		.okshadow()
 			
 	@autorun =>
 		Meteor.setTimeout layout, 1000
-		Articles.find({},  {sort: {itime: -1}}).count()
+		Articles.find({},  {sort: {createdAt: -1}}).count()
 
 		console.log "update"
 	

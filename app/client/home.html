@@ -18,7 +18,7 @@
 
 <template name="article_box">
 <article class="size-{{size}} {{sizeClasses}} {{#if editMode}}editMode{{/if}}">
-	<button class="btn btn-update">Update</button>
+	<button class="btn btn-default btn-update">Edit</button>
 	
 	<div class="content">
 
@@ -27,6 +27,8 @@
 	{{else}}
 
 	<h1>{{title}}</h1>
+	<span>createdAt: {{createdAt}}</span>
+	<span>updatedAt: {{updatedAt}}</span>
 	<img src="http://www.medea-awards.com/files/showcases-2010/2010_blabla00.jpg" />
 	{{#markdown}}{{{text}}}{{/markdown}}
 
