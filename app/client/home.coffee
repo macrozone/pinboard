@@ -3,29 +3,36 @@ BOARD_SELECTOR = ".board"
 Router.map ->
 	@route "home", 
 		path: "/"
+		yieldTemplates:
+			home_nav: to: "headerNavigationRight"
 		data: ->
 			articles: Articles.find {},  {sort: {createdAt: -1}}
-		
+			showEditor: Session.get "showEditor"
 
 
+
+
+Template.home_nav.events
+	"click .btn-toggle-editor": ->
+		Session.set "showEditor", !Session.get "showEditor"
 
 
 Template.home.rendered = ->
-	pckry = new Packery @find BOARD_SELECTOR
 
-	$grid = @$(BOARD_SELECTOR)
+
+
+	$board = @$(BOARD_SELECTOR)
 
 	layout = ->
-		$grid.packery "destroy"
-		$grid.packery( )
-		$grid.find "article .content"
+		$board.packery "destroy"
+		$board.packery( )
+		$board.find "article .content"
 		.okshadow()
 			
 	@autorun =>
 		Meteor.setTimeout layout, 1000
 		Articles.find({},  {sort: {createdAt: -1}}).count()
 
-		console.log "update"
 	
 
 Template.article_box.events
@@ -62,7 +69,9 @@ Template.article_box.editMode = ->
 	@_id == Session.get("editArticle")
 
 
+
 Template.article_box.sizeClasses = ->
+
 	switch @size
 		when 'l' then 'col-xs-12 col-sm-12 col-md-6 col-lg-6'
 		when 's' then 'col-xs-6 col-sm-3 col-md-2 col-lg-2'

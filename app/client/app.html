@@ -1,0 +1,38 @@
+<template name="header">
+	<div class="navbar navbar-fixed-top navbar-default" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand curvy" href="/"> Codename "Pinboard"</a>
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					
+					<li>
+<button class="btn btn-default btn-toggle-fuck {{#if sandromode}}btn-warning{{/if}}">Toggle Sandros special fuckoff-mode</button></li>
+					 {{> yield region='headerNavigation'}}
+				</ul>
+				 <ul class="nav navbar-nav navbar-right">
+				 {{> yield region='headerNavigationRight'}}
+      				{{> loginButtons }} <!-- here -->
+    </ul>
+			</div><!-- /.nav-collapse -->
+		</div><!-- /.container -->
+	</div>
+</template>
+
+<template name="layout">
+	
+	{{>header}}
+
+
+		{{>yield}}
+		
+	
+</template>
+
