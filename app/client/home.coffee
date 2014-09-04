@@ -1,3 +1,5 @@
+BOARD_SELECTOR = ".board"
+
 Router.map ->
 	@route "home", 
 		path: "/"
@@ -9,9 +11,9 @@ Router.map ->
 
 
 Template.home.rendered = ->
-	pckry = new Packery @find ".grid"
+	pckry = new Packery @find BOARD_SELECTOR
 
-	$grid = @$(".grid")
+	$grid = @$(BOARD_SELECTOR)
 
 	layout = ->
 		$grid.packery "destroy"
@@ -32,16 +34,16 @@ Template.article_box.events
 		$target = $(event.currentTarget)
 		
 		expanded = $target.hasClass("expanded")
-		$(event.target).closest(".grid").find("article").not($target).removeClass "expanded"
+		$(event.target).closest(BOARD_SELECTOR).find("article").not($target).removeClass "expanded"
 		$target.toggleClass "expanded"
 		Session.set "editArticle", ""
 		if expanded
 	
 			# if shrinking, just layout
-			$(event.target).closest(".grid").packery()
+			$(event.target).closest(BOARD_SELECTOR).packery()
 	
 		else
-			$(event.target).closest(".grid").packery "fit", $target.get 0
+			$(event.target).closest(BOARD_SELECTOR).packery "fit", $target.get 0
 
 
 	"click .btn-update": (event, template)->
@@ -50,7 +52,7 @@ Template.article_box.events
 		else
 			Session.set "editArticle", template.data._id
 			Meteor.setTimeout ->
-				$(event.target).closest(".grid").packery()
+				$(event.target).closest(BOARD_SELECTOR).packery()
 			, 300
 		return false
 
