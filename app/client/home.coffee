@@ -6,7 +6,7 @@ Router.map ->
 		yieldTemplates:
 			home_nav: to: "headerNavigationRight"
 		data: ->
-			articles: Articles.find {},  {sort: {createdAt: -1}}
+			articles: Articles.find {},  {sort: {updatedAt: -1, createdAt: -1}}
 			showEditor: Session.get "showEditor"
 
 
@@ -31,7 +31,7 @@ Template.home.rendered = ->
 			
 	@autorun =>
 		Meteor.setTimeout layout, 1000
-		Articles.find({},  {sort: {createdAt: -1}}).count()
+		Articles.find({},  {sort: {updatedAt: -1, createdAt: -1}}).count()
 
 	
 
