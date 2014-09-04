@@ -33,7 +33,7 @@
 	<div class="content">
 
 	{{#if editMode}}
-		{{> quickForm collection="Articles" id=_id type="update" doc=. }}
+		{{> quickForm collection="Articles" id=_id type="update" doc=. autosave=true}}
 	{{else}}
 
 	<h1>{{title}}</h1>
