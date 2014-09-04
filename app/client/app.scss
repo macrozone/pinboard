@@ -1,0 +1,31 @@
+body.fuckoff
+{
+	*{
+	cursor: url('/stinkefinger.gif'), auto !important;
+	cursor: url('/stinkefinger.gif'), text !important;
+	cursor: url('/stinkefinger.gif'), pointer !important;
+}
+}
+
+body.boom
+{
+	*{
+	cursor: url('/boom.png'), auto !important;
+	cursor: url('/boom.png'), text !important;
+	cursor: url('/boom.png'), pointer !important;
+}
+}
+
+body
+{
+	margin-top: 75px;
+}
+
+
+.navbar-nav
+{
+	.btn
+	{
+		margin-top: 8px;
+	}
+}

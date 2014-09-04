@@ -1,6 +1,7 @@
 
 
 @Articles = new Meteor.Collection "articles"
+
 @Articles.attachSchema new SimpleSchema
 	title:
 		type: String
