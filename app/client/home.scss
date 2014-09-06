@@ -1,88 +1,168 @@
 
-article
+$color-l: hsl(7, 46%, 80%);
+$color-m: hsl(126, 46%, 80%);
+$color-s: hsl(206, 46%, 80%);
+
+.btn-add-box
 {
-	padding: 15px;
-.content
-	{
-		overflow: hidden;
-		padding: 15px;
-		height: 100%;
-	}
+	margin-right: 10px;
+}
 
-	.btn-update
-	{
-		position: absolute;
-		display: none;
-		top: 20px;
-		right: 20px;
-	}
+.btn-add-l
+{
+	background-color: $color-l;
+}
 
-	&.expanded
+.btn-add-m
+{
+	background-color: $color-m;
+}
+
+.btn-add-s
+{
+	background-color: $color-s;
+}
+
+.trash-area
+{
+	position: fixed;
+	top: 0px;
+	right: 0px;
+	z-index: 10;
+	transition: transform 0.3s ease-out;
+	padding: 70px 120px;
+	font-size: 200%;
+	 transform: translate(0px,-300px);
+	body.draggingBox &
 	{
-		cursor: not-allowed;
-		outline: #333 dotted 4px;
+		transform: translate(0px,-20px);
+	
+	}
+}
+
+body, html
+{
+	height: 100%;
+}
+.board
+{
+	min-height: 100%;
+	$boxPadding: 15px;
+	$height-s: 200px;
+	$height-m: 400px;
+	$height-l: 600px;
+
+
+
+	article
+	{
+
+		&.is-dragging
+		{
+			z-index: 2000;
+		}
+
+		transition: transform .2s ease-in-out; 
+		&.notInit
+		{
+
+			transform: scale(0.001);
+		}
+
+		&.init
+		{
+			transition: none;
+		}
+
+
+		padding: $boxPadding;
+		.content
+		{
+
+			overflow: hidden;
+			padding: $boxPadding;
+			height: 100%;
+		}
+
 		.btn-update
 		{
-			display: block;
+			position: absolute;
+			display: none;
+			top: 20px;
+			right: 20px;
 		}
-		width: 50% !important;
-		height: auto !important;
 
-		&.size-l.expanded
+		&.expanded
+		{
+			cursor: not-allowed;
+			outline: #333 dotted 4px;
+			.btn-update
+			{
+				display: block;
+			}
+			width: 50% !important;
+			@media screen and (max-width: 767px){
+				width: 100% !important;
+			}
+			.content
+			{
+				height: auto !important;
+			}
+
+			&.size-l.expanded
+			{
+
+				width: 100% !important;
+
+			}
+
+		}
+
+		&.editMode
+		{
+			cursor: auto;
+		}
+
+
+
+		&.size-l {
+
+
+			.content
+			{
+				height: $height-l - 2*$boxPadding;
+				min-height: $height-l - 2*$boxPadding;
+
+				background-color: $color-l;
+
+			}
+		}
+
+		&.size-m, &
 		{
 			
-			width: 100% !important;
-		
+			.content
+			{
+				height: $height-m - 2*$boxPadding;
+				min-height: $height-m - 2*$boxPadding;
+				background-color: $color-m;
+
+			}
 		}
-		
-	}
 
-	&.editMode
-	{
-		cursor: auto;
-	}
-
-	img
-	{
-		width: 100%;
-	}
-
-	&.size-l {
-		
-		height: 600px;
-			min-height: 600px;
-		.content
+		&.size-s
 		{
 
 			
-			background-color: hsl(7, 46%, 80%);
+			.content
+			{
+				height: $height-s - 2*$boxPadding;
+				min-height: $height-s - 2*$boxPadding;
+				background-color: $color-s;
 
+
+			}
 		}
+
 	}
-
-	&.size-m, &
-	{
-		height: 400px;
-			min-height: 400px;
-		.content
-		{
-			
-			background-color: hsl(126, 46%, 80%);
-
-		}
-	}
-
-	&.size-s
-	{
-		
-			height: 200px;
-			min-height: 200px;
-		.content
-		{
-			background-color: hsl(206, 46%, 80%);
-			
-
-		}
-	}
-
 }

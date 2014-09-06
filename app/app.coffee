@@ -3,11 +3,12 @@
 @Articles = new Meteor.Collection "articles"
 
 @Articles.attachSchema new SimpleSchema
-	title:
-		type: String
+	
+	position: 
 		index: 1
-		label: "Title"
-	text:
+		type: Number
+	content:
+		optional: true
 		type: String
 		autoform: 
 			rows: 10

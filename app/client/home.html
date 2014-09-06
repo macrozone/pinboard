@@ -15,34 +15,24 @@
 {{#each articles}}
 	{{>article_box}}
 {{/each}}
-
+<div class="grid-sizer {{defaultGridSizeClasses}}"></div>
 </div>
 
 </template>
 
 <template name="home_nav">
-
-<li><button class="btn btn-default btn-toggle-editor">Toggle Editor</button></li>
+<li><span class="btn btn-default trash-area glyphicon glyphicon-trash"></span></li>
+<li><button draggable="true" class="btn btn-add-box btn-add-s" data-size="s" >+ S</button></li>
+<li><button draggable="true" class="btn btn-add-box btn-add-m" data-size="m" >+ M</button></li>
+<li><button draggable="true" class="btn btn-add-box btn-add-l" data-size="l" >+ L</button></li>
 </template>
 
 
 <template name="article_box">
-<article class="size-{{size}} {{sizeClasses}} {{#if editMode}}editMode{{/if}}">
-	<button class="btn btn-default btn-update">Edit</button>
-	
-	<div class="content">
+<article class="notInit size-{{size}} {{sizeClasses}}" id="{{_id}}">
 
-	{{#if editMode}}
-		{{> quickForm collection="Articles" id=_id type="update" doc=. autosave=true}}
-	{{else}}
-
-	<h1>{{title}}</h1>
-	<span>createdAt: {{createdAt}}</span>
-	<span>updatedAt: {{updatedAt}}</span>
-	<img src="http://www.medea-awards.com/files/showcases-2010/2010_blabla00.jpg" />
-	{{#markdown}}{{{text}}}{{/markdown}}
-
-	{{/if}}
+	<div class="content static">
+	{{{content}}}
 	</div>
 
 	</article>
