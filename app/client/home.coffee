@@ -15,7 +15,10 @@ Router.map ->
 addBox = (size) ->
 	
 	position = Articles.findOne({}, sort: position: 1)?.position
-	position--
+	unless position? 
+		position = 0
+	else
+		position--
 	Articles.insert 
 		size: size
 		position: position
